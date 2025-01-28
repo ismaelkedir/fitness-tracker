@@ -9,15 +9,17 @@ const app = express();
 // Built-in Middleware to parse JSON
 app.use(express.json());
 
+app.get('/hello', (req:Request, res: Response)=>{
+    res.send({message: "Hellooooo World!!!!!!"})
+})
+
+// Routes
+app.use('/mongo-workouts', workoutRoutes);
+
 // Custom middwares
 app.use(logger)
 app.use(errorHandler)
 app.use(notFoundHandler)
 
-// Routes
-app.use('/mongo-workouts', workoutRoutes);
-app.get('/hello', (req:Request, res: Response)=>{
-    res.send({message: "Hellooooo World!!!!!!"})
-})
 
 export default app;
